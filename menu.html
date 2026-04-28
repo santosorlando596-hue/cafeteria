@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Menu Completo - Grão Alto</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="menu.css">
+
+</head>
+
+<body>
+    <header class="header hidden">
+        <a href="index.html" class="logo"><img src="imgss/Mídia.jpg"></a>
+        <nav class="navbar">
+            <a class="navp" href="café.html">Home</a>
+            <a class="navp" href="#menu">Sobre nós</a>
+        </nav>
+    </header>
+    <div id="carrinho-flutuante" class="carrinho-container">
+        <h3>Seu Pedido </h3>
+        <ul id="lista-carrinho"></ul>
+        <div class="total-pedido">
+            <strong>Total: R$ <span id="valor-total">0.00</span></strong>
+        </div>
+        <button class="btn-finalizar" onclick="finalizarPedido()">Pedir pelo WhatsApp</button>
+    </div>
+    <button class="botao-abrir-carrinho">
+    🛒 Carrinho (<span id="cart-count">0</span>)
+</button>
+    <main class="menu-page hidden">
+        <div class="menu-titulo-container">
+            <h1>Cardápio Completo</h1>
+            <h3>Nossos Cafés</h3>
+        </div>
+        <section class="secao-menu-completo hidden">
+            <!-- Categoria 1: Cafés Quentes -->
+            <h3 class="categoria-titulo">Nossos Cafés Quentes</h3>
+            <div class="menu-grid " id="container">
+                <div class="menu-item">
+                    <img src="imgss/pexels-tyler-nix-1259808-2396220.jpg" alt="Espresso">
+                    <h3>Espresso Intenso</h3>
+                    <p>Blend da casa com notas de chocolate e finalização aveludada.</p>
+                    <span class="preco">R$ 8,00</span>
+                    <button class="btn-add-cart" data-nome="Espresso Intenso" data-preco="8.00">Adicionar</button>
+                </div>
+                <div class="menu-item">
+                    <img src="imgss/pexels-valentina-besker-917936546-36495566.jpg" alt="Capuccino">
+                    <h3>Capuccino Italiano</h3>
+                    <p>Dose de espresso, leite vaporizado e uma pitada de cacau puro.</p>
+                    <span class="preco">R$ 14,00</span>
+                    <button class="btn-add-cart" data-nome="Capuccino Italiano" data-preco="14.00">Adicionar</button>
+                </div>
+                <div class="menu-item">
+                    <img src="imgss/pexels-roman-odintsov-4869282.jpg" alt="Latte">
+                    <h3>Latte Macchiato</h3>
+                    <p>Três camadas perfeitas: leite quente, espresso e espuma leve.</p>
+                    <span class="preco">R$ 13,00</span>
+                    <button class="btn-add-cart" data-nome="Latte Macchiato" data-preco="13.00">Adicionar</button>
+                </div>
+            </div>
+
+            <!-- Categoria 2: Acompanhamentos -->
+            <h3 class="categoria-titulo">Para Acompanhar</h3>
+            <div class="menu-grid">
+                <div class="menu-item">
+                    <img src="imgss/pexels-amar-13119652.jpg" alt="Croissant">
+                    <h3>Croissant Artesanal</h3>
+                    <p>Massa folhada francesa, feita diariamente em nossa padaria.</p>
+                    <span class="preco">R$ 12,00</span>
+                    <button class="btn-add-cart" data-nome="Croissant Artesanal" data-preco="12.00">Adicionar</button>
+                </div>
+                <div class="menu-item">
+                    <img src="imgss/pexels-roman-odintsov-5845838.jpg" alt="Cookie">
+                    <h3>Cookie de Chocolate</h3>
+                    <p>Cookie americano com gotas de chocolate meio amargo.</p>
+                    <span class="preco">R$ 9,00</span>
+                    <button class="btn-add-cart" data-nome="Cookie de Chocolate" data-preco="9.00">Adicionar</button>
+                </div>
+                <div class="menu-item">
+                    <img src="imgss/pexels-helenalopes-4279110.jpg" alt="Pão de Queijo">
+                    <h3>Pão de Queijo Real</h3>
+                    <p>Receita mineira legítima com queijo canastra curado.</p>
+                    <span class="preco">R$ 6,00</span>
+                    <button class="btn-add-cart" data-nome="Pão de Queijo Real" data-preco="6.00">Adicionar</button>
+                </div>
+            </div>
+        </section>
+        <!-- Categoria 3: Bebidas Geladas & Refrescantes -->
+        <h3 class="categoria-titulo hidden">Gelados & Refrescantes</h3>
+        <div class="menu-grid">
+            <div class="menu-item">
+                <img src="imgss/pexels-tiffany-aa-2159091755-35786294.jpg" alt="Iced Latte">
+                <h3>Iced Vanilla Latte</h3>
+                <p>Espresso batido com leite gelado e xarope artesanal de baunilha.</p>
+                <span class="preco">R$ 16,00</span>
+                <button class="btn-add-cart" data-nome="Iced Vanilla Latte" data-preco="16.00">Adicionar</button>
+            </div>
+            <div class="menu-item">
+                <img src="imgss/pexels-freestocks-214333.jpg" alt="Frappé">
+                <h3>Frappé de Caramelo</h3>
+                <p>Bebida cremosa à base de café, gelo e calda de caramelo salgado.</p>
+                <span class="preco">R$ 19,00</span>
+                <button class="btn-add-cart" data-nome="Frappé de Caramelo" data-preco="19.00">Adicionar</button>
+            </div>
+            <div class="menu-item">
+                <img src="imgss/pexels-gamzenurcolakerol-7711922.jpg" alt="Pink Lemonade">
+                <h3>Pink Lemonade</h3>
+                <p>Refresco de limão siciliano com extrato natural de frutas vermelhas.</p>
+                <span class="preco">R$ 14,00</span>
+                <button class="btn-add-cart" data-nome="Pink Lemonade" data-preco="14.00">Adicionar</button>
+            </div>
+        </div>
+
+        <!-- Categoria 4: Salgados & Brunch -->
+        <h3 class="categoria-titulo hidden">Salgados & Brunch</h3>
+        <div class="menu-grid">
+            <div class="menu-item">
+                <img src="imgss/pexels-orlovamaria-4969892.jpg" alt="Avocado Toast">
+                <h3>Avocado Toast</h3>
+                <p>Pão de fermentação natural, creme de abacate temperado e ovo poché.</p>
+                <span class="preco">R$ 24,00</span>
+                <button class="btn-add-cart" data-nome="Avocado Toast" data-preco="24.00">Adicionar</button>
+            </div>
+            <div class="menu-item">
+                <img src="imgss/pexels-nano-erdozain-120534369-29538425.jpg" alt="Quiche">
+                <h3>Quiche Lorraine</h3>
+                <p>Massa brisée crocante com recheio cremoso de bacon e queijo gruyère.</p>
+                <span class="preco">R$ 18,00</span>
+                <button class="btn-add-cart" data-nome="Quiche Lorraine" data-preco="18.00">Adicionar</button>
+            </div>
+            <div class="menu-item">
+                <img src="imgss/pexels-rajesh-tp-749235-1600714.jpg" alt="Sanduíche">
+                <h3>Ciabatta de Frango</h3>
+                <p>Frango defumado, queijo branco, rúcula e maionese de ervas.</p>
+                <span class="preco">R$ 22,00</span>
+                <button class="btn-add-cart" data-nome="Ciabatta de Frango" data-preco="22.00">Adicionar</button>
+            </div>
+        </div>
+
+        <!-- Categoria 5: Sobremesas Irresistíveis -->
+        <h3 class="categoria-titulo hidden">Doces Artesanais</h3>
+        <div class="menu-grid">
+            <div class="menu-item">
+                <img src="imgss/frutas.jpg" alt="Cheesecake">
+                <h3>Cheesecake de Frutas Vermelhas</h3>
+                <p>Base crocante de biscoito com creme de queijo leve e calda caseira.</p>
+                <span class="preco">R$ 20,00</span>
+                <button class="btn-add-cart" data-nome="Cheesecake de Frutas Vermelhas"
+                    data-preco="20.00">Adicionar</button>
+            </div>
+            <div class="menu-item">
+                <img src="imgss/browni.jpg" alt="Brownie">
+                <h3>Brownie com Sorvete</h3>
+                <p>Brownie de chocolate 70% servido quente com sorvete de baunilha.</p>
+                <span class="preco">R$ 18,00</span>
+                <button class="btn-add-cart" data-nome="Brownie com Sorvete" data-preco="18.00">Adicionar</button>
+            </div>
+            <div class="menu-item">
+                <img src="imgss/torta.jpg" alt="Torta de Limão">
+                <h3>Torta de Limão Siciliano</h3>
+                <p>Massa amanteigada com creme cítrico e merengue maçaricado.</p>
+                <span class="preco">R$ 16,00</span>
+                <button class="btn-add-cart" data-nome="Torta de Limão Siciliano" data-preco="16.00">Adicionar</button>
+            </div>
+        </div>
+
+    </main>
+
+    <footer class="footer hidden">...</footer>
+
+</html><a href="#" class="btn-topo">↑</a>
+<script src="script.js"></script>
+</body>

@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>cafeteria </title>
+    <link rel="stylesheet" href="cofee.css" >
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=IBM+Plex+Serif:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600;1,700&display=swap"
+        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Google+Sans+Code:ital,wght@0,300..800;1,300..800&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Xanh%20Mono:700|Xanh%20Mono:400">
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css?family=Noto%20Serif%20Todhri:700|Noto%20Serif%20Todhri:400">
+</head>
+   
+<body>
+    <header class="header hidden">
+
+        <a href="#" class="logo">
+            <img src="imgss/Mídia.jpg">
+        </a>
+        <nav class="navbar ">
+            <a class="navp" href="#"> Home </a>
+            <a class="navp" href="#about"> Sobre nós </a>
+            <a class="navp" href="#menu"> Menu </a>
+            <a class="navp" href="#review"> Avaliações </a>
+            <a class="navp" class="nav" href="#address"> Endereço </a>
+        </nav>
+      
+   
+</div>
+
+    </header>
+
+    <main>
+
+        <video autoplay loop muted playsinline>
+            <source src="imgss/1194719-sd_960_540_25fps.mp4" type="video/mp4">
+        </video>
+        <!-- Novo container de conteúdo -->
+        <div class="content-wrapper hidden">
+            <!-- Texto primeiro -->
+            <div class="text-container">
+                <h1 class="pt">O sabor do grão selecionado em cada xícara</h1>
+            </div>
+        
+    </main>   
+   <div id="carrinho-flutuante" class="carrinho-container">
+        <h3>Seu Pedido </h3>
+        <ul id="lista-carrinho"></ul>
+        <div class="total-pedido">
+            <strong>Total: R$ <span id="valor-total">0.00</span></strong>
+        </div>
+        <button class="btn-finalizar" onclick="finalizarPedido()">Pedir pelo WhatsApp</button>
+    </div>
+    <button class="botao-abrir-carrinho">
+    🛒 Carrinho (<span id="cart-count">0</span>)
+</button>
+    <!-- Seção Sobre Nós -->
+    <section id="about" class="sobre-nos-acolhedor hidden">
+        <div class="conteudo-sobre">
+
+            <!-- Lado Esquerdo: Texto -->
+            <article class="texto-acolhedor">
+                <span>Nossa História</span>
+                <h2>Onde o café encontra o carinho</h2>
+                <p>
+                    Na <strong>Grão Alto</strong>, acreditamos que o café é muito mais que uma bebida; é o abraço que a
+                    gente se dá durante o dia. Selecionamos cada grão com rigor artesanal para garantir que cada xícara
+                    conte uma história de dedicação e sabor único.
+                </p>
+                <p>
+                    Nosso espaço foi pensado para ser o seu refúgio urbano, onde o aroma do café fresco se mistura ao
+                    conforto de um ambiente feito para você relaxar, trabalhar ou celebrar momentos especiais.
+                </p>
+                <a href="https://maps.app.goo.gl/KvEat5qHJE8hNC3V7" class="btn-saiba-mais">Venha nos visitar</a>
+            </article>
+
+            <!-- Lado Direito: Imagem -->
+            <figure class="imagem-sobre">
+                <!-- Dica: Use uma foto de uma xícara fumegante ou do ambiente da cafeteria -->
+                <img src="imgss/pexels-tim-douglas-6205633.jpg" alt="Café sendo servido com carinho na Grão Alto">
+            </figure>
+
+        </div>
+    </section>
+    <!-- Seção Menu Atualizada -->
+    <section id="menu">
+        <h2 class="menuh">O Menu Selecionado</h2>
+        <div class="menu-grid  hidden">
+
+            <!-- Item 1 -->
+            <div class="menu-item">
+                <img src="imgss/pexels-tyler-nix-1259808-2396220.jpg" alt="Espresso">
+                <h3>Espresso Intenso</h3>
+                <p>Grãos selecionados com notas de chocolate e caramelo.</p>
+                <span class="preco">R$ 8,00</span>
+            </div>
+
+            <!-- Item 2 -->
+            <div class="menu-item">
+                <img src="imgss/pexels-valentina-besker-917936546-36495566.jpg" alt="Capuccino">
+                <h3>Capuccino Italiano</h3>
+                <p>Equilíbrio perfeito entre café, leite vaporizado e cacau.</p>
+                <span class="preco">R$ 14,00</span>
+            </div>
+
+            <!-- Item 3 -->
+            <div class="menu-item">
+                <img src="imgss/pexels-amar-13119652.jpg" alt="Croissant">
+                <h3>Croissant de Manteiga</h3>
+                <p>Massa folhada artesanal, sempre quentinho.</p>
+                <span class="preco">R$ 12,00</span>
+            </div>
+        </div>
+        <div class="botao-menu-completo">
+            <a href="menu.html" class="btn-saiba-mais">Ver Menu Completo</a>
+        </div>
+    </section>
+    <!-- Seção de Avaliações -->
+    <section id="review" class="avaliacoes hidden">
+        <div class="titulo-secao">
+            <span>O que dizem</span>
+            <h2>Nossos Clientes</h2>
+        </div>
+
+        <div class="review-container">
+            <!-- Avaliação 1 -->
+            <div class="review-card">
+                <div class="estrelas">★★★★★</div>
+                <p>"O melhor Espresso que já tomei! O ambiente é super acolhedor e perfeito para trabalhar."</p>
+                <div class="cliente">
+                    <img src="imgss/pexels-danxavier-1239291.jpg" alt="Cliente">
+                    <div class="cliente-info">
+                        <h4>José da Silva</h4>
+                        <span>Designer</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Avaliação 2 -->
+            <div class="review-card">
+                <div class="estrelas">★★★★★</div>
+                <p>"O croissant é sempre fresquinho e o atendimento é impecável. Virou meu refúgio diário."</p>
+                <div class="cliente">
+                    <img src="imgss/pexels-italo-melo-881954-2379004.jpg" alt="Cliente">
+                    <div class="cliente-info">
+                        <h4>Ricardo Souza</h4>
+                        <span>Escritor</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Avaliação 3 -->
+            <div class="review-card">
+                <div class="estrelas">★★★★★</div>
+                <p>"Ambiente incrível e o Capuccino Italiano é simplesmente perfeito. Recomendo a todos!"</p>
+                <div class="cliente">
+                    <img src="imgss/pexels-danxavier-1239291.jpg" alt="Cliente">
+                    <div class="cliente-info">
+                        <h4>Ana Oliveira</h4>
+                        <span>Estudante</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer id="address" class="footer hidden">
+        <div class="footer-content">
+            <div class="info">
+                <h3>Grão Alto</h3>
+                <p>Rua do Café, 123 - Centro</p>
+                <p>Horário: Seg a Sáb, 08h às 20h</p>
+            </div>
+            <div class="social">
+                <p>Siga-nos nas redes sociais</p>
+            </div>
+        </div>
+        <div class="copyright">
+            &copy; 2024 Grão Alto Cafeteria. Todos os direitos reservados.
+        </div>
+    </footer>
+
+
+<script src="script.js"></script>
+
+</body>
+
+</html>

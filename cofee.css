@@ -1,0 +1,965 @@
+* {
+    text-decoration: none;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    scroll-behavior: smooth;
+}
+
+:root {
+    --cor-fundo: #F5F5DC;
+    --cor-primaria: #2B1B17;
+    /* Marrom escuro */
+    --cor-secundaria: #483121;
+    /* Marrom médio */
+    --cor-detalhe: #C5A059;
+    /* Dourado */
+    --cor-texto-claro: #F5F5DC;
+    --cor-texto-escuro: #2B1B17;
+}
+
+body {
+    min-height: 100vh;
+    /* Gradiente suave de fundo */
+    background: linear-gradient(135deg, #F5F5DC 0%, #E8D3B9 100%);
+    font-family: 'Arial', sans-serif;
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 5%;
+    /* Gradiente forte no cabeçalho */
+    background-image: linear-gradient(to right top, #371d05, #2e160b, #23100c, #170809, #000000);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    border: solid black 1px;
+    border-radius: 4px;
+}
+
+.carrinho-container {
+    position: fixed;
+    top: 0;
+    right: -100%; /* Começa escondido fora da tela */
+    width: 350px;
+    height: 100vh; /* Ocupa a altura toda */
+    background-color: white; /* Ou var(--cor-fundo) */
+    transition: right 0.4s ease;
+    z-index: 2000;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Classe que você vai ativar via JavaScript */
+.carrinho-container.ativo {
+    right: 0;
+}
+
+/* Estilo do contador sobre o ícone */
+
+
+/* Contador de itens sobre a bolinha */
+#cart-count {
+    position: absolute;
+    top: 0;
+    right: 0;
+    background-color: var(--cor-primaria); /* Marrom escuro */
+    color: white;
+    border-radius: 50%;
+    width: 22px;
+    height: 22px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 11px;
+    font-weight: bold;
+    border: 2px solid var(--cor-detalhe);
+}
+
+.logo img {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    border: 2px solid var(--cor-detalhe);
+    transition: all 0.6s ease-in-out;
+    /* Suaviza a volta ao tamanho normal */
+}
+
+.logo img:hover {
+    /* O scale(1.2) faz crescer 20% */
+    transform: scale(1.5) translateY(5px);
+    animation: rotate-center 0.6s ease-in-out both;
+}
+
+@keyframes rotate-center {
+    0% {
+        transform: scale(1.5) translateY(5px) rotate(0deg);
+    }
+
+    100% {
+        transform: scale(1.5) translateY(5px) rotate(360deg);
+    }
+}
+
+
+.navbar {
+    display: flex;
+    gap: 20px;
+}
+
+.navp {
+    color: var(--cor-texto-claro);
+    font-weight: bold;
+    font-size: 1.1rem;
+    padding: 10px 15px;
+    transition: 0.3s;
+    border-radius: 5px;
+}
+
+/* Efeito de destaque ao passar o mouse no menu */
+.navp:hover {
+    color: var(--cor-detalhe);
+    background: rgba(255, 255, 255, 0.1);
+}
+
+.icons {
+    display: flex;
+    gap: 15px;
+    align-items: center;
+}
+
+.icon {
+    width: 25px;
+    height: 25px;
+    cursor: pointer;
+    filter: invert(1);
+    /* Torna os ícones pretos em brancos para contrastar no fundo escuro */
+    transition: 0.3s;
+}
+
+.icon:hover {
+    transform: scale(1.0) translateY(-2px);
+    filter: invert(0.8) sepia(1) saturate(5) hue-rotate(10deg);
+    /* Efeito dourado no hover */
+}
+
+main {
+    position: relative;
+    height: 90vh;
+    display: flex;
+    align-items: center;
+    /* Centraliza verticalmente o conjunto */
+    padding: 0 10%;
+    /* Margem nas laterais */
+    overflow: hidden;
+}
+
+video {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    opacity: 0.8;
+    z-index: -1;
+
+}
+
+.content-wrapper {
+    display: flex;
+    flex-direction: column;
+    /* Faz o botão e o texto ficarem um sobre o outro */
+    width: 100%;
+    justify-content: center;
+    align-items: flex-start;
+    /* Alinha o conteúdo à esquerda */
+    gap: 30px;
+    /* Cria um espaço elegante entre o texto e o botão */
+}
+
+.text-container {
+    width: 60%;
+    text-align: left;
+    /* Alinhamento à esquerda para combinar com o botão */
+    order: 1;
+    /* Garante que o texto seja o primeiro item */
+    font-family: "IBM Plex Serif", serif;
+    color: var(--cor-secundaria);
+    font-family: 'Noto Serif Todhri';
+}
+
+.botao-menu-completo {
+    margin-top: 50px;
+    text-align: center;
+    width: 100%;
+}
+
+/* Garante que a grid tenha apenas 3 colunas na home */
+.menu-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    /* Força 3 colunas */
+    gap: 30px;
+    justify-content: center;
+}
+
+@media (max-width: 768px) {
+    .menu-grid {
+        grid-template-columns: 1fr;
+        /* 1 coluna no celular */
+    }
+}
+
+
+
+.btn {
+    color: #2B1B17;
+    font-family: "Google Sans Code", monospace;
+    font-optical-sizing: auto;
+    box-shadow: 30%;
+    color: var(--cor-texto-claro);
+    /* Mudança para contraste */
+    text-decoration: none;
+    display: block;
+    /* Garante que o link preencha o container */
+
+}
+
+.cta-container:hover .btn {
+    color: var(--cor-primaria);
+}
+
+
+.pt {
+    font-size: 4.5rem;
+    /* Aumentei um pouco para dar mais impacto */
+    line-height: 1.1;
+    /* Adicione um filtro para o texto não sumir no vídeo claro */
+    text-shadow: 4px 4px 15px rgba(0, 0, 0, 0.9);
+}
+
+/* 3. Escureça um pouco o vídeo para o texto "saltar" */
+video {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    opacity: 0.6;
+    /* Diminuir a opacidade ajuda muito na leitura */
+    z-index: -1;
+    filter: brightness(0.7);
+    /* Filtro extra de escurecimento */
+}
+
+@media (max-width: 768px) {
+    .navbar {
+        display: none;
+    }
+
+    /* Esconde o menu para criar um futuramente */
+    .content-wrapper {
+        align-items: center;
+        text-align: center;
+    }
+
+    .text-container {
+        width: 100%;
+        text-align: center;
+    }
+
+    .pt {
+        font-size: 2.5rem;
+    }
+}
+
+
+
+
+
+/* Seção Sobre Nós */
+.sobre-nos-acolhedor {
+    padding: 100px 10%;
+    background: var(--cor-fundo);
+    /* Usa o bege claro do seu :root */
+    display: flex;
+    justify-content: center;
+}
+
+.conteudo-sobre {
+    display: flex;
+    align-items: center;
+    gap: 60px;
+    max-width: 1200px;
+    flex-wrap: wrap;
+    /* Para funcionar no celular */
+}
+
+/* Coluna de Texto */
+.texto-acolhedor {
+    flex: 1;
+    min-width: 350px;
+}
+
+.texto-acolhedor span {
+    color: var(--cor-detalhe);
+    font-family: 'Xanh Mono', monospace;
+    font-size: 1.2rem;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    display: block;
+    margin-bottom: 15px;
+}
+
+.texto-acolhedor h2 {
+    font-family: 'Noto Serif Todhri', serif;
+    font-size: 3rem;
+    color: var(--cor-primaria);
+    margin-bottom: 25px;
+    line-height: 1.2;
+}
+
+.texto-acolhedor p {
+    font-family: 'Arial', sans-serif;
+    color: var(--cor-secundaria);
+    font-size: 1.1rem;
+    line-height: 1.8;
+    margin-bottom: 35px;
+}
+
+/* Botão da Seção */
+.btn-saiba-mais {
+    display: inline-block;
+    padding: 15px 35px;
+    background-color: var(--cor-primaria);
+    color: var(--cor-texto-claro);
+    text-decoration: none;
+    font-family: 'Xanh Mono', monospace;
+    border-radius: 4px;
+    transition: 0.4s ease;
+    box-shadow: 4px 4px 0px var(--cor-detalhe);
+}
+
+.btn-saiba-mais:hover {
+    background-color: var(--cor-detalhe);
+    color: var(--cor-primaria);
+    transform: translate(2px, 2px);
+    box-shadow: 0px 0px 0px transparent;
+}
+
+/* Coluna da Imagem */
+.imagem-sobre {
+    flex: 1;
+    min-width: 350px;
+    position: relative;
+}
+
+.imagem-sobre img {
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+    box-shadow: 20px 20px 0px -5px var(--cor-detalhe);
+    /* Moldura dourada moderna */
+    transition: 0.5s;
+}
+
+.imagem-sobre img:hover {
+    transform: scale(1.02);
+}
+
+/* Ajuste para telas pequenas */
+@media (max-width: 900px) {
+    .conteudo-sobre {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .texto-acolhedor h2 {
+        font-size: 2.2rem;
+    }
+
+    .imagem-sobre img {
+        box-shadow: 10px 10px 0px var(--cor-detalhe);
+    }
+}
+
+
+
+
+
+/* --- Seção de Menu (Cardápio) --- */
+#menu {
+    padding: 80px 10% 100px;
+    background: var(--cor-fundo);
+    text-align: center;
+}
+
+#menu h2 {
+    font-family: 'Noto Serif Todhri', serif;
+    font-size: 3rem;
+    color: var(--cor-primaria);
+    margin-bottom: 40px;
+    position: relative;
+    display: inline-block;
+}
+
+/* Linha decorativa embaixo do título */
+#menu h2::after {
+    content: '';
+    display: block;
+    width: 60px;
+    height: 3px;
+    background: var(--cor-detalhe);
+    margin: 10px auto 0;
+}
+
+.menu-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 30px;
+    margin-top: 50px;
+}
+
+.menu-item {
+    background: #fff;
+    padding: 25px;
+    border-radius: 15px;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.05);
+    transition: transform 0.3s ease;
+    border: 1px solid transparent;
+}
+
+.menu-item:hover {
+    transform: translateY(-10px);
+    border-color: var(--cor-detalhe);
+}
+
+.menu-item img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 10px;
+    margin-bottom: 15px;
+}
+
+.menuh {
+    font-family: 'Noto Serif Todhri', serif;
+    font-size: 3rem;
+    color: var(--cor-primaria);
+    text-align: center;
+}
+
+.menu-item h3 {
+    font-family: 'IBM Plex Serif', serif;
+    color: var(--cor-primaria);
+    margin-bottom: 10px;
+}
+
+.menu-item p {
+    font-size: 0.9rem;
+    color: #666;
+    margin-bottom: 15px;
+}
+
+.price {
+    font-weight: bold;
+    font-size: 1.2rem;
+    color: var(--cor-secundaria);
+    display: block;
+}
+
+/* Botão de compra/pedido */
+.btn-pedir {
+    display: inline-block;
+    margin-top: 15px;
+    padding: 8px 20px;
+    background: var(--cor-primaria);
+    color: white;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    transition: 0.3s;
+}
+
+.btn-pedir:hover {
+    background: var(--cor-detalhe);
+    color: var(--cor-primaria);
+}
+
+/* Ajuste para telas menores */
+@media (max-width: 480px) {
+    #menu h2 {
+        font-size: 2rem;
+    }
+}
+
+/* Ajuste das imagens do Menu */
+.menu-item img {
+    width: 100%;
+    height: 250px;
+    /* Define uma altura fixa para todas */
+    object-fit: cover;
+    /* Corta a imagem para preencher o espaço sem distorcer */
+    border-radius: 10px;
+    display: block;
+    margin-bottom: 15px;
+}
+
+/* Ajuste da imagem na seção Sobre Nós */
+.imagem-sobre img {
+    width: 100%;
+    height: 450px;
+    /* Altura elegante para a seção lateral */
+    object-fit: cover;
+    border-radius: 8px;
+}
+
+/* Ajuste do Logo para não distorcer no círculo */
+.logo img {
+    width: 80px;
+    height: 80px;
+    object-fit: cover;
+    border-radius: 50%;
+}
+
+
+
+
+/* --- Seção de Avaliações --- */
+.avaliacoes {
+    padding: 80px 10%;
+    background: var(--cor-primaria);
+    /* Fundo escuro para destacar do menu */
+    text-align: center;
+}
+
+.avaliacoes .titulo-secao span {
+    color: var(--cor-detalhe);
+    font-family: 'Xanh Mono', monospace;
+}
+
+.avaliacoes .titulo-secao h2 {
+    color: #97978a;
+    margin-bottom: 50px;
+}
+
+.review-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+}
+
+.review-card {
+    background: rgba(255, 255, 255, 0.05);
+    /* Efeito sutil de transparência */
+    padding: 30px;
+    border-radius: 15px;
+    border: 1px solid rgba(197, 160, 89, 0.2);
+    transition: 0.3s;
+}
+
+.review-card:hover {
+    transform: translateY(-5px);
+    background: rgba(255, 255, 255, 0.1);
+}
+
+.estrelas {
+    color: var(--cor-detalhe);
+    font-size: 1.2rem;
+    margin-bottom: 15px;
+}
+
+.review-card p {
+    color: var(--cor-texto-claro);
+    font-style: italic;
+    line-height: 1.6;
+    margin-bottom: 20px;
+}
+
+.cliente {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    justify-content: center;
+}
+
+.cliente img {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 2px solid var(--cor-detalhe);
+}
+
+.cliente-info h4 {
+    color: var(--cor-texto-claro);
+    font-family: 'Noto Serif Todhri', serif;
+    font-size: 1rem;
+}
+
+.cliente-info span {
+    color: var(--cor-detalhe);
+    font-size: 0.8rem;
+}
+
+
+
+
+
+
+/* Estilo do Menu */
+#menu {
+    padding: 80px 5%;
+    text-align: center;
+}
+
+.menu-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 30px;
+    margin-top: 40px;
+}
+
+.menu-item {
+    background: white;
+    padding: 20px;
+    border-radius: 15px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    transition: 0.3s;
+}
+
+.menu-item:hover {
+    transform: scale(1.05);
+}
+
+.menu-item img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 10px;
+}
+
+/* Seção de Avaliações */
+/* --- Seção de Avaliações --- */
+#review {
+    padding: 100px 10%;
+    background: linear-gradient(to bottom, var(--cor-fundo), #E8D3B9);
+    text-align: center;
+}
+
+.titulo-secao span {
+    color: var(--cor-detalhe);
+    font-family: 'Xanh Mono', monospace;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+}
+
+.titulo-secao h2 {
+    font-family: 'Noto Serif Todhri', serif;
+    font-size: 3rem;
+    color: var(--cor-primaria);
+    margin-bottom: 50px;
+}
+
+.review-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+}
+
+.review-card {
+    background: white;
+    padding: 40px 30px;
+    border-radius: 15px;
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.05);
+    transition: 0.3s;
+    border-bottom: 4px solid transparent;
+}
+
+.review-card:hover {
+    transform: translateY(-10px);
+    border-color: var(--cor-detalhe);
+}
+
+.estrelas {
+    color: var(--cor-detalhe);
+    margin-bottom: 20px;
+    font-size: 1.2rem;
+}
+
+.review-card p {
+    font-style: italic;
+    color: var(--cor-secundaria);
+    line-height: 1.6;
+    margin-bottom: 30px;
+}
+
+.cliente {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    justify-content: center;
+}
+
+.cliente img {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 2px solid var(--cor-detalhe);
+}
+
+.cliente-info h4 {
+    color: var(--cor-primaria);
+    font-family: 'Noto Serif Todhri';
+}
+
+.cliente-info span {
+    font-size: 0.8rem;
+    color: var(--cor-detalhe);
+}
+
+/* --- Rodapé (Footer) --- */
+.footer {
+    background: var(--cor-primaria);
+    color: var(--cor-texto-claro);
+    padding: 60px 10% 20px;
+}
+
+.footer-content {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 40px;
+    border-bottom: 1px solid rgba(197, 160, 89, 0.2);
+    padding-bottom: 40px;
+}
+
+.info h3 {
+    font-family: 'Noto Serif Todhri';
+    font-size: 2rem;
+    color: var(--cor-detalhe);
+    margin-bottom: 15px;
+}
+
+.copyright {
+    text-align: center;
+    padding-top: 20px;
+    font-size: 0.9rem;
+    opacity: 0.7;
+}
+
+/* --- Parallax do Vídeo --- */
+video {
+    will-change: transform;
+}
+
+
+/* Remove o comportamento de "vídeo" do main nesta página específica */
+.menu-page {
+    height: auto !important;
+    display: block !important;
+    padding: 150px 10% 80px !important;
+    background-color: var(--cor-fundo);
+}
+
+.menu-titulo-container {
+    text-align: center;
+    margin-bottom: 50px;
+}
+
+.menu-titulo-container h1 {
+    font-family: 'Noto Serif Todhri', serif;
+    font-size: 3.5rem;
+    color: var(--cor-primaria);
+}
+
+.menu-titulo-container h3 {
+    color: var(--cor-detalhe);
+    font-family: 'Xanh Mono', monospace;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+/* Estilo para os títulos das categorias no menu.html */
+.categoria-titulo {
+    font-family: 'Noto Serif Todhri', serif;
+    font-size: 2rem;
+    color: var(--cor-detalhe);
+    text-align: center;
+    margin: 60px 0 30px;
+    position: relative;
+}
+
+.categoria-titulo::after {
+    content: '';
+    display: block;
+    width: 50px;
+    height: 2px;
+    background: var(--cor-detalhe);
+    margin: 10px auto;
+}
+
+/* Garante que a grid de menu se comporte bem na nova página */
+.secao-menu-completo {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+/* Ajuste fino para os cards não ficarem gigantes em telas muito grandes */
+.menu-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 30px;
+    margin-bottom: 60px;
+    /* Dá respiro entre as categorias */
+}
+
+/* --- Finalização do Menu --- */
+.menu-item h3 {
+    font-family: 'Noto Serif Todhri', serif;
+    font-size: 1.5rem;
+    color: var(--cor-primaria);
+    margin-bottom: 10px;
+}
+
+.menu-item p {
+    font-size: 0.95rem;
+    color: var(--cor-secundaria);
+    margin-bottom: 15px;
+    line-height: 1.5;
+}
+
+.preco {
+    display: block;
+    font-family: 'Xanh Mono', monospace;
+    font-weight: bold;
+    color: var(--cor-detalhe);
+    font-size: 1.3rem;
+}
+
+/* --- EFEITO SCROLL REVEAL (Animação ao descer) --- */
+
+.hidden {
+    opacity: 0;
+    filter: blur(5px);
+    transform: translateY(30px);
+    transition: all 1s ease-out;
+}
+
+.show {
+    opacity: 1;
+    filter: blur(0);
+    transform: translateY(0);
+}
+
+/* --- Estilização do Carrinho Flutuante --- */
+.carrinho-container {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    width: 300px;
+    background: rgb(133, 103, 70);
+    padding: 20px;
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+    border: 2px solid var(--cor-detalhe);
+    z-index: 1000;
+    font-family: 'Arial', sans-serif;
+    display: none;
+    /* Começa escondido */
+    transition: all 0.3s ease-in-out;
+}
+
+.botao-abrir-carrinho {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    width: 60px;
+    height: 60px;
+    background-color: #ab7943;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+    z-index: 1001;
+}
+
+.carrinho-aberto {
+    display: block !important;
+    animation: fadeIn 0.3s;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.carrinho-container h3 {
+    color: var(--cor-primaria);
+    margin-bottom: 15px;
+    border-bottom: 1px solid #eee;
+    padding-bottom: 10px;
+}
+
+#lista-carrinho {
+    list-style: none;
+    max-height: 200px;
+    overflow-y: auto;
+    margin-bottom: 15px;
+}
+
+#lista-carrinho li {
+    font-size: 0.9rem;
+    padding: 5px 0;
+    color:  white;
+    border-bottom: 1px dashed #eee;
+}
+
+.total-pedido {
+    margin-bottom: 15px;
+    font-size: 1.1rem;
+    color: var(--cor-primaria);
+}
+
+.btn-finalizar {
+    width: 100%;
+    padding: 10px;
+    background-color: var(--cor-detalhe);
+    /* Cor do WhatsApp */
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.btn-finalizar:hover {
+    background-color: #128C7E;
+}
+
+/* Badge do Contador no Ícone */
+.cart-icon-wrapper {
+    position: relative;
+}
+
+#cart-count {
+    position: absolute;
+    top: -8px;
+    right: -8px;
+    background: var(--cor-detalhe);
+    color: var(--cor-primaria);
+    font-size: 12px;
+    font-weight: bold;
+    padding: 2px 6px;
+    border-radius: 50%;
+}

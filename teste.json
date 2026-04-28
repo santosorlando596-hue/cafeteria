@@ -1,0 +1,12 @@
+[
+  {
+    "nome": "Capuccino Italiano",
+    "descricao": "Dose de espresso, leite vaporizado e uma pitada de cacau puro",
+    "preco": "R$ 14,00"
+  },
+  {
+    "nome": "Expresso",
+    "descricao": "Café forte e encorpado",
+    "preco": "R$ 8,00"
+  }
+]
